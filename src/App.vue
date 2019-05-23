@@ -8,7 +8,7 @@
             <br>
             <br>
             <div class='style'>
-              <img src="src/assets/c-style1.jpg"> </img>
+              <img src="src/assets/images/styles/style1.jpg" />
             </div>
             <MediaDiff :origin="origin"
                       :diff="diff"
@@ -21,7 +21,7 @@
             <br>
             <br>
             <div class='style'>
-              <img src="src/assets/c-style1.jpg"> </img>
+              <img src="src/assets/images/styles/style1.jpg" />
             </div>
             <MediaDiff :origin="origin"
                       :diff="diff"
@@ -45,15 +45,15 @@
 
 <script>
 
-  import MediaDiff from './Component.vue';
+  import MediaDiff from './components/MediaDiff';
 
   export default {
     name: 'app',
     data() {
       return {
         activeName: "first",
-        origin: "src/assets/content.jpg",
-        diff: "src/assets/c-result1.jpg",
+        origin: "src/assets/images/artworks/artwork1.jpg",
+        diff: "src/assets/images/results/artwork1-style1.jpg",
         origin_video: "src/assets/diff.mp4",
         diff_video: "src/assets/origin.mp4"
       }
