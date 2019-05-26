@@ -41,10 +41,8 @@
       action="#"
       class="upload"
       :before-upload="beforeUpload"
-      :file-list="fileList"
     >
       <el-button size="small" type="primary">点击上传</el-button>
-      <div slot="tip" class="el-upload__tip">只能上传jpg/png文件</div>
     </el-upload>
   </div>
 </template>
@@ -62,7 +60,6 @@ export default {
       marginTop: 0,
       artworkSrc: "",
       fixedArtworkSrc: "",
-      fileList: []
     };
   },
   computed: {
@@ -153,9 +150,9 @@ export default {
     }
 
     .photo-container {
-      overflow: hidden;
       position: relative;
       width: 256px;
+      overflow: hidden;
 
       .small-photo-container {
         position: relative;
@@ -189,9 +186,9 @@ export default {
 
   .upload {
     position: absolute;
+    bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 10px;
   }
 }
 </style>
