@@ -8,7 +8,11 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
+    "@types/express": "^4.16.1",
+    "@types/node": "^12.0.3",
+    "body-parser": "^1.19.0",
     "element-ui": "^2.8.2",
+    "express": "^4.17.1",
     "normalize.css": "^8.0.1",
     "vue": "^2.4.4"
   },

@@ -10,7 +10,7 @@
           @mousemove="handleMouseMove"
         >
           <div class="magnifier" :style="magnifierStyle" ref="magnifier" v-show="showMagnifier"></div>
-          <img class="small-photo" :src="artworkSrc" alt="原图">
+          <img class="small-photo"  :src="artworkSrc" alt="原图">
         </div>
         <div class="big-photo-container" v-show="showMagnifier">
           <img
@@ -38,9 +38,12 @@
       </div>
     </div>
     <el-upload
-      action="#"
+      action="http://localhost:3000"
       class="upload"
       :before-upload="beforeUpload"
+      :on-change="handlePreview"
+      :on-success="handleSuccess"
+      :show-file-list="false"
     >
       <el-button size="small" type="primary">点击上传</el-button>
     </el-upload>
@@ -48,8 +51,8 @@
 </template>
 
 <script>
-const artwork1 = require('../assets/images/photo-fix/artworks/artwork1.jpg');
-const fixedArtwork1 = require('../assets/images/photo-fix/fixed/artwork1-fixed.jpg');
+let artwork1 = "";
+let fixedArtwork1="";
 export default {
   data: function() {
     return {
@@ -71,6 +74,11 @@ export default {
         marginLeft: `-${this.marginLeft}px`,
         marginTop: `-${this.marginTop}px`
       };
+    }
+  },
+  watch:{
+    files(newval,oldval){
+      
     }
   },
   methods: {
@@ -115,7 +123,26 @@ export default {
     beforeUpload: function({name}) {
       this.artworkSrc = artwork1;
       this.fixedArtworkSrc = fixedArtwork1;
-      return false;
+      return true;
+    },
+    handlePreview(file){
+      let fs=file.raw;
+      let burl=URL.createObjectURL(fs);
+      artwork1=burl;
+      let fname = fs.name;
+      fname = fname.split(".")[0];
+      let result_name = "../../uploads/" + fname + "-fixed.jpg";
+      console.log(result_name);
+      this.fixedArtworkSrc = result_name;
+      // let reader=new FileReader();
+      // reader.onload=function(e){
+      //   let c=e.target.result;
+      //   alert(c);
+      // }
+      // reader.readAsText(fs,"UTF-8");
+    },
+    handleSuccess(res,file,fileList){
+      
     }
   },
   mounted() {}
