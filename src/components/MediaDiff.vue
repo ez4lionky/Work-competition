@@ -33,7 +33,7 @@
       return {
         width: null,
         height: null,
-        posX: 200,
+        posX: 128,
         pageX: null,
         isDragging: false,
         allowNextFrame: true,
@@ -45,7 +45,7 @@
       dtype: function () {
         let origin_dtype = this.computerDtype(this.origin);
         let diff_dtype = this.computerDtype(this.diff);
-        return origin_dtype === diff_dtype ? origin_dtype : 0;
+        return 1;
       }
     },
     methods: {
@@ -139,7 +139,7 @@
     transform: translateX(-50%) translateZ(0);
     z-index: 2;
     will-change: left;
-    left: 200px;
+    left: 128px;
   }
 
   .cursor{

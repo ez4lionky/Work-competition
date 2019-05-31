@@ -1,4 +1,5 @@
 import os
+import time
 from flask import Flask, request, redirect, url_for
 
 from flask_cors import CORS
@@ -25,6 +26,7 @@ def upload_file():
             filename = file.filename
             p=os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(p)
+            time.sleep(1)
             return filename
     return '''
     <!doctype html>
